@@ -116,6 +116,11 @@ while not game_over:
     for x in my_snake.snake_body[:-1]:
         if x == my_snake_top:
             my_snake.alive = False
+            
+    #for x in enemy_snake.snake_body[:-1]
+    #    if my_snake_top == x:
+    #        my_snake.alive = False
+    #        message("You lost!")
 
     display.fill((255, 255, 255))  # clear display with whit color
     if my_snake.alive:
