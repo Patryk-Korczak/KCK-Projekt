@@ -83,6 +83,9 @@ game_speed = 30
 background = pygame.image.load('resources/game_background.png')
 apple_image = pygame.image.load('resources/apple.png')
 FONT = pygame.freetype.SysFont('Microsoft Sans Serif', 32)
+pygame.mixer_music.load('sounds/background_music.wav')
+pygame.mixer_music.set_volume(0.1)
+pygame.mixer_music.play(-1)
 
 
 def new_apple():
@@ -177,6 +180,7 @@ while not game_over:
         if enemy_snake.alive:
             FONT.render_to(display, (10, 10), 'You lost! Your score: ' + str(my_snake.length - 1), (255, 0, 0))
         if update_on_death:
+            pygame.mixer_music.pause()
             lost_effect.play()
             update_on_death = False
 
