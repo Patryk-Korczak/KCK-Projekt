@@ -86,6 +86,7 @@ FONT = pygame.freetype.SysFont('Microsoft Sans Serif', 32)
 pygame.mixer_music.load('sounds/background_music.wav')
 pygame.mixer_music.set_volume(0.1)
 pygame.mixer_music.play(-1)
+max_length = display_width/10 * display_height/10
 
 
 def new_apple():
@@ -164,13 +165,20 @@ while not game_over:
 
     if my_snake.x == my_snake.apple_x and my_snake.y == my_snake.apple_y:
         my_snake.length += 1
-        print("Your snake ate apple...")
         apple_effect.play()
         new_apple()
 
     if enemy_snake.x == my_snake.apple_x and enemy_snake.y == my_snake.apple_y:
-        print("Enemy snake ate apple...")
         new_apple()
+
+    if my_snake.length + enemy_snake.length == max_length:
+        FONT.render_to(display, (10, 50),
+                       'YOU WON! Your score: ' + str(my_snake.length - 1) + ' Enemy score: ' + str(
+                           enemy_snake.length - 1),
+                       (255, 0, 0))
+        FONT.render_to(display, (10, 100), 'Press SPACE to exit...', (255, 0, 0))
+
+
 
     if not my_snake.alive:
         my_snake.snake_body.clear()
@@ -190,5 +198,6 @@ while game_over:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
+
                 pygame.quit()
                 quit()
