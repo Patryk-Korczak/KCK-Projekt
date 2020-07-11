@@ -1,2 +1,2 @@
 # KCK-Projekt
-Gra przygotowywana na potrzeby zaliczenia przedmiotu Komunikacja Człowiek-Komputer
+Gra przygotowywana na potrzeby przedmiotu Komunikacja Człowiek-Komputer
